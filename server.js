@@ -15,7 +15,7 @@ const pool = new Pool({
 });
 // app.use(express.static(__dirname + '/public/css'));
 app.get('/', (req, res) => {
-  // Вывод веб-страницы с кнопками
+  // Вывод веб-страницы с кнопками 
   res.send(`
   <html>
 
