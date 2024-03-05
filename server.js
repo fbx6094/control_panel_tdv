@@ -113,7 +113,7 @@ app.get('/', (req, res) => {
                   команды</button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу (НЕ РАБОТАЕТ)</button>
+              <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу </button>
               <br>
               <br>
               <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Элемент установлен на любой из этажей
@@ -188,7 +188,7 @@ app.get('/', (req, res) => {
               <br>
               <br>
   
-              <button id="button" onclick="updateScore('house_got_roof_team_2')">Дом/небоскреб получил крышу (НЕ РАБОТАЕТ)</button>
+              <button id="button" onclick="updateScore('house_got_roof_team_2')">Дом/небоскреб получил крышу </button>
               <br>
               <br>
   
@@ -348,7 +348,7 @@ app.get('/update-score', (req, res) => {
     team = 1;
     msg = 'element_on_4_floor_team_1'
   } else if (action === 'house_got_roof_team_1') {
-    updateValue = 0;
+    updateValue = 6;
     team = 1;
     msg = 'house_got_roof_team_1'
   } else if (action === 'element_on_skyscraper_team_1') {
@@ -426,7 +426,7 @@ app.get('/update-score', (req, res) => {
     team = 2;
     msg = 'element_on_4_floor_team_2'
   } else if (action === 'house_got_roof_team_2') {
-    updateValue = 0;
+    updateValue = 6;
     team = 2;
     msg = 'house_got_roof_team_2'
   } else if (action === 'element_on_skyscraper_team_2') {
