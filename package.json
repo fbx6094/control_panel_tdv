@@ -1,0 +1,22 @@
+{
+  "name": "cpt",
+  "version": "1.0.0",
+  "description": "cpt",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fbx6094/control_panel_tdv.git"
+  },
+  "keywords": [
+    "cpt"
+  ],
+  "author": "fbx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fbx6094/control_panel_tdv/issues"
+  },
+  "homepage": "https://github.com/fbx6094/control_panel_tdv#readme"
+}
