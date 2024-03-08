@@ -42,7 +42,20 @@ app.get('/', (req, res) => {
               max-width: 80rem;
               padding: 2rem;
           }
-  
+          
+          .reset_btn{
+              background-color: #ad0000;
+              border: none;
+              color: white;
+              padding: 0.5rem 1rem;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 1rem;
+              margin: 0.5rem 0;
+              cursor: pointer;
+          }
+
           .column {
               display: flex;
               flex-direction: column;
@@ -288,6 +301,11 @@ app.get('/', (req, res) => {
               <br>
               <button id="button" onclick="updateScore('element_on_skyscraper_floor_4')">Элемент установлен на 4 этаж
                   небоскреба</button>
+              <br>
+              <br>
+              <br>
+              <br>
+              <button id="button" class="reset_btn" onClick="updateScore('reset')">СБРОС ОЧКОВ</button>
   
           </div>
       </div>
@@ -503,6 +521,10 @@ app.get('/update-score', (req, res) => {
     updateValue = 11;
     team = 0;
     msg = 'element_on_skyscraper_floor_4'
+  } else if (action === 'reset') {
+    team = 3;
+    updateValue = 0;
+    msg = 'reset completed successfully'
   }
   if (team === 1) {
     pool.query('UPDATE score SET score_team_1 = score_team_1 + $1', [updateValue], (error, results) => {
@@ -534,11 +556,21 @@ app.get('/update-score', (req, res) => {
         console.log("success: true, message: Счёт успешно обновлён  ", msg);
       }
     });
+  } else if (team === 3) {
+    pool.query('UPDATE score SET score_team_1 = 0, score_team_2 = 0', (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
   }
 
 });
 
-app.listen(port, '192.168.1.111',() => {
-  console.log('listening on 192.168.1.111:5050')
+app.listen(port, () => {
+  // console.log('listening on 192.168.1.111:5050')
   console.log(`Сервер запущен на ${port}-ом порту `);
 });
