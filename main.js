@@ -142,6 +142,9 @@ app.get('/', (req, res) => {
               <button id="button" onclick="updateScore('parking_anywhere_team_1')">Парковка на любой из улиц первая команда</button>
               <br>
               <br>
+              <h1 style="text-align: center;">ШТРАФЫ</h1>
+              <br>
+              <br>
               <button id="button" onclick="updateScore('moving_2_or_more_obs_team_1')">Движение двух и более элементов
                   одновременно у первой команды</button>
               <br>
@@ -220,7 +223,9 @@ app.get('/', (req, res) => {
               <button id="button" onclick="updateScore('parking_anywhere_team_2')">Парковка на любой из улиц вторая команда</button>
               <br>
               <br>
-  
+              <h1 style="text-align: center;">ШТРАФЫ</h1>
+              <br>
+              <br>
   
   
               <!-- ШТРАФЫ-->
@@ -344,6 +349,13 @@ app.get('/update-score', (req, res) => {
   let updateValue = 0;
   let team;
   let msg;
+  let team1_street1;
+  let team1_street2;
+  let team1_street3;
+  let team2_street1;
+  let team2_street2;
+  let team2_street3;
+  let skyscraper;
   if (action === 'increase') {
     updateValue = 1;
   } else if (action === 'decrease') {
@@ -354,6 +366,7 @@ app.get('/update-score', (req, res) => {
     updateValue = 2;
     team = 1;
     msg = 'element_on_1_floor_team_1';
+    
   } else if (action === 'element_on_2_floor_team_1') {
     updateValue = 3;
     team = 1;
