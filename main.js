@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
           .column {
               display: flex;
               flex-direction: column;
-              flex-basis: calc(40% - 2rem);
+              
               margin: 1rem;
           }
   
@@ -76,8 +76,8 @@ app.get('/', (req, res) => {
   
           .center {
               position: absolute;
-              left: 50%;
-              top: 190%;
+              left: 45%;
+              top: 0%;
               transform: translate(-50%);
               order: 2;
               /* margin-top: -50px; */
@@ -94,6 +94,7 @@ app.get('/', (req, res) => {
               font-size: 1rem;
               margin: 0.5rem 0;
               cursor: pointer;
+              width:100%;
           }
   
           /* @media (max-width: 768px) {
@@ -110,21 +111,15 @@ app.get('/', (req, res) => {
   
   <body>
       <div class="container">
-          <div class="column left">
-              <button id="button" onclick="updateScore('element_on_1_floor_team_1')">Элемент установлен на 1 этаж дома для первой
-                  команды</button>
+          <div class="column center">
+              <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ ПЕРВОЙ КОМАНДЫ(ЛЕВОЙ)</h1>
+              <button id="button" onclick="updateScore('element_on_street_1_team_1')">Элемент установлен на улице Медиа для первой команды</button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('element_on_2_floor_team_1')">Элемент установлен на 2 этаж дома для первой
-                  команды</button>
+              <button id="button" onclick="updateScore('element_on_street_2_team_1')">Элемент установлен на улице Первых для первой команды</button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('element_on_3_floor_team_1')">Элемент установлен на 3 этаж дома для первой
-                  команды</button>
-              <br>
-              <br>
-              <button id="button" onclick="updateScore('element_on_4_floor_team_1')">Элемент установлен на 4 этаж дома для первой
-                  команды</button>
+              <button id="button" onclick="updateScore('element_on_street_3_team_1')">Элемент установлен на улице Истории для первой команды</button>
               <br>
               <br>
               <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу </button>
@@ -142,7 +137,7 @@ app.get('/', (req, res) => {
               <button id="button" onclick="updateScore('parking_anywhere_team_1')">Парковка на любой из улиц первая команда</button>
               <br>
               <br>
-              <h1 style="text-align: center;">ШТРАФЫ</h1>
+              <h1 style="text-align: center; color: red;">ШТРАФЫ</h1>
               <br>
               <br>
               <button id="button" onclick="updateScore('moving_2_or_more_obs_team_1')">Движение двух и более элементов
@@ -185,114 +180,8 @@ app.get('/', (req, res) => {
               <br>
               <button id="button" onclick="updateScore('opponents_triangle_taken_by_team_1')">Захват конуса соперника первая
                   команда</button>
-          </div>
-  
-          <div class="column right">
-              <button id="button" onclick="updateScore('element_on_1_floor_team_2')">Элемент установлен на 1 этаж дома для второй
-                  команды</button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('element_on_2_floor_team_2')">Элемент установлен на 2 этаж дома для второй
-                  команды</button>
-              <br>
-              <br>
-              <button id="button" onclick="updateScore('element_on_3_floor_team_2')">Элемент установлен на 3 этаж дома для второй
-                  команды</button>
-              <br>
-              <br>
-              <button id="button" onclick="updateScore('element_on_4_floor_team_2')">Элемент установлен на 4 этаж дома для второй
-                  команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('house_got_roof_team_2')">Дом/небоскреб получил крышу </button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('element_on_skyscraper_team_2')">Элемент установлен на любой из этажей
-                  небоскреба
-                  для
-                  второй команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('parking_on_warehouse_team_2')">Парковка на складе вторая команда</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('parking_anywhere_team_2')">Парковка на любой из улиц вторая команда</button>
-              <br>
-              <br>
-              <h1 style="text-align: center;">ШТРАФЫ</h1>
-              <br>
-              <br>
-  
-  
-              <!-- ШТРАФЫ-->
-  
-              <button id="button" onclick="updateScore('moving_2_or_more_obs_team_2')">Движение двух и более элементов
-                  одновременно у второй команды</button>
-  
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('touching_another_robot_team_2')">Касание робота соперника у второй
-                  команды</button>
-  
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('bothering_another_robot_team_2')">Препятствие роботу соперника у второй
-                  команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('throwing_elements_at_another_robot_team_2')">Кидание элементов в робота
-                  соперника у второй команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('robot_out_of_field_team_2')">Проекция робота за полем у второй
-                  команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('moving_streets_team_2')">Движение кварталов у второй команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('robot_broken_team_2')">Отвалилась деталь у второй команды</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('opponents_house_broken_by_team_2')">Поломка дома соперника вторая
-                  команда</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('skyscraper_broken_by_team_2')">Поломка небоскреба вторая команда</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('opponents_robot_broken_team_2')">Поломка робота соперника вторая
-                  команда</button>
-              <br>
-              <br>
-  
-              <button id="button" onclick="updateScore('opponents_triangle_taken_by_team_2')">Захват конуса соперника вторая
-                  команда</button>
-          </div>
-  
-  
-          <!-- <button id="button" onclick="updateScore('increase')">Увеличить счёт</button>
-          <button id="button" onclick="updateScore('decrease')">Уменьшить счёт</button>
-          <br>
-          <br> -->
-  
-  
-      </div>
-      <div class="container" style="margin-top: -70px;">
-          <div class="column">
               <button id="button" onclick="updateScore('element_on_skyscraper_floor_1')">Элемент установлен на 1 этаж
                   небоскреба</button>
               <br>
@@ -312,6 +201,14 @@ app.get('/', (req, res) => {
               <br>
               <br>
               <button id="button" class="reset_btn" onClick="updateScore('reset')">СБРОС ОЧКОВ</button>
+              <br>
+              <br>
+          </div>
+  
+         
+      <div class="container" style="margin-top: -70px;">
+          <div class="column">
+              
   
           </div>
       </div>
@@ -342,39 +239,46 @@ app.get('/', (req, res) => {
   `);
 });
 
-
+let counter1 = 0;
+let counter2 = 0;
+let counter3 = 0;
 app.get('/update-score', (req, res) => {
   const action = req.query.action;
   // const team = req.query.team;
   let updateValue = 0;
   let team;
   let msg;
-  let team1_street1;
-  let team1_street2;
-  let team1_street3;
-  let team2_street1;
-  let team2_street2;
-  let team2_street3;
+  let team1;
+  let team2;
   let skyscraper;
+
   if (action === 'increase') {
     updateValue = 1;
   } else if (action === 'decrease') {
     updateValue = -1;
   }
   //ПЕРВАЯ КОМАНДА
-  else if (action === 'element_on_1_floor_team_1') {
-    updateValue = 2;
-    team = 1;
-    msg = 'element_on_1_floor_team_1';
-
-  } else if (action === 'element_on_2_floor_team_1') {
-    updateValue = 3;
-    team = 1;
-    msg = 'element_on_2_floor_team_1';
-  } else if (action === 'element_on_3_floor_team_1') {
-    updateValue = 4;
-    team = 1;
-    msg = 'element_on_3_floor_team_1'
+  else if (action === 'element_on_street_1_team_1') {
+    updateValue = 2 + counter1;
+    // team = 1;
+    msg = 'element_on_street_1_team_1';
+    counter1 += 1;
+    team1 = 1;
+    console.log(counter1)
+  } else if (action === 'element_on_street_2_team_1') {
+    updateValue = 2 + counter2;
+    // team = 1;
+    msg = 'element_on_street_2_team_1';
+    counter2 += 1;
+    team1 = 2;
+    console.log(counter2)
+  } else if (action === 'element_on_street_3_team_1') {
+    updateValue = 2 + counter3;
+    // team = 1;
+    msg = 'element_on_street_3_team_1';
+    counter3 += 1;
+    team1 = 3;
+    console.log(counter3)
   } else if (action === 'element_on_4_floor_team_1') {
     updateValue = 6;
     team = 1;
@@ -594,38 +498,72 @@ app.get('/update-score', (req, res) => {
         console.log("success: true, message: Счёт успешно обновлён  ", msg);
       }
     });
+  } else if (team1 === 1) {
+    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, team_1_score_street_1 = team_1_score_street_1 + 1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+        console.log(counter);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
+  } else if (team1 === 2) {
+    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, team_1_score_street_2 = team_1_score_street_2 + 1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+        console.log(counter2);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
+  } else if (team1 === 3) {
+    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, team_1_score_street_3 = team_1_score_street_3 + 1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+        console.log(counter3);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
   }
-  // if (team === 1) {
-  //   pool.query('UPDATE score SET score_team_1 = score_team_1 + $1', [updateValue], (error, results) => {
-  //     if (error) {
-  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
-  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
-  //     } else {
-  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
-  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
-  //     }
-  //   });
-  // } else if (team === 2) {
-  //   pool.query('UPDATE score SET score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
-  //     if (error) {
-  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
-  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
-  //     } else {
-  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
-  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
-  //     }
-  //   });
-  // } else if (team === 0) {
-  //   pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
-  //     if (error) {
-  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
-  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
-  //     } else {
-  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
-  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
-  //     }
-  //   });
-  // } else if (team === 3) {
+  else if (team === 1) {
+    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
+  } else if (team === 2) {
+    pool.query('UPDATE score SET score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
+  } else if (team === 0) {
+    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
+  }
+  // else if (team === 3) {
   //   pool.query('UPDATE score SET score_team_1 = 0, score_team_2 = 0', (error, results) => {
   //     if (error) {
   //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
