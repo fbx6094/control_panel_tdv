@@ -4,6 +4,7 @@ const { Pool } = require('pg');
 
 const app = express();
 const port = 5050;
+const ipv4adress = '192.168.1.79';
 
 // Подключение к базе данных
 const pool = new Pool({
@@ -397,7 +398,7 @@ app.get('/update-score', (req, res) => {
     updateValue = -15;
     team = 1;
     msg = 'throwing_elements_at_another_robot_team_1'
-  } else if (action === 'robot_out_of_field_team_1') {
+  } else if (action === 'robot_out_of_field_team_1') { 
     updateValue = -10;
     team = 1;
     msg = 'robot_out_of_field_team_1'
@@ -570,7 +571,7 @@ app.get('/update-score', (req, res) => {
 
 });
 
-app.listen(port, () => {
-  // console.log('listening on 192.168.1.111:5050')
+app.listen(port, ipv4adress, () => {
+  console.log(`Сервер запущен на ${ipv4adress} порт ${port}`);
   console.log(`Сервер запущен на ${port}-ом порту `);
 });
