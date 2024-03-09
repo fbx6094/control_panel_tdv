@@ -366,7 +366,7 @@ app.get('/update-score', (req, res) => {
     updateValue = 2;
     team = 1;
     msg = 'element_on_1_floor_team_1';
-    
+
   } else if (action === 'element_on_2_floor_team_1') {
     updateValue = 3;
     team = 1;
@@ -411,7 +411,7 @@ app.get('/update-score', (req, res) => {
     updateValue = -15;
     team = 1;
     msg = 'throwing_elements_at_another_robot_team_1'
-  } else if (action === 'robot_out_of_field_team_1') { 
+  } else if (action === 'robot_out_of_field_team_1') {
     updateValue = -10;
     team = 1;
     msg = 'robot_out_of_field_team_1'
@@ -522,26 +522,30 @@ app.get('/update-score', (req, res) => {
   else if (action === 'element_on_skyscraper_floor_1') {
     updateValue = 5;
     team = 0;
-    msg = 'element_on_skyscraper_floor_1'
+    msg = 'element_on_skyscraper_floor_1';
+    skyscraper = 1;
   } else if (action === 'element_on_skyscraper_floor_2') {
     updateValue = 7;
     team = 0;
+    skyscraper = 2;
     msg = 'element_on_skyscraper_floor_2'
   } else if (action === 'element_on_skyscraper_floor_3') {
     updateValue = 9;
     team = 0;
+    skyscraper = 3;
     msg = 'element_on_skyscraper_floor_3'
   } else if (action === 'element_on_skyscraper_floor_4') {
     updateValue = 11;
     team = 0;
+    skyscraper = 4
     msg = 'element_on_skyscraper_floor_4'
   } else if (action === 'reset') {
     team = 3;
     updateValue = 0;
     msg = 'reset completed successfully'
   }
-  if (team === 1) {
-    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1', [updateValue], (error, results) => {
+  if (skyscraper === 1) {
+    pool.query('UPDATE score SET team_score_street_main = 1, score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
       if (error) {
         res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
         console.log("success: false, message: Ошибка обновления счёта  ", msg);
@@ -550,8 +554,8 @@ app.get('/update-score', (req, res) => {
         console.log("success: true, message: Счёт успешно обновлён  ", msg);
       }
     });
-  } else if (team === 2) {
-    pool.query('UPDATE score SET score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+  } else if (skyscraper === 2) {
+    pool.query('UPDATE score SET team_score_street_main = 2, score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
       if (error) {
         res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
         console.log("success: false, message: Ошибка обновления счёта  ", msg);
@@ -560,8 +564,18 @@ app.get('/update-score', (req, res) => {
         console.log("success: true, message: Счёт успешно обновлён  ", msg);
       }
     });
-  } else if (team === 0) {
-    pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+  } else if (skyscraper === 3) {
+    pool.query('UPDATE score SET team_score_street_main = 3, score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+      if (error) {
+        res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+        console.log("success: false, message: Ошибка обновления счёта  ", msg);
+      } else {
+        res.json({ success: true, message: 'Счёт успешно обновлён' });
+        console.log("success: true, message: Счёт успешно обновлён  ", msg);
+      }
+    });
+  } else if (skyscraper === 4) {
+    pool.query('UPDATE score SET team_score_street_main = 4, score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
       if (error) {
         res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
         console.log("success: false, message: Ошибка обновления счёта  ", msg);
@@ -571,7 +585,7 @@ app.get('/update-score', (req, res) => {
       }
     });
   } else if (team === 3) {
-    pool.query('UPDATE score SET score_team_1 = 0, score_team_2 = 0', (error, results) => {
+    pool.query('UPDATE score SET score_team_1 = 0, score_team_2 = 0, team_1_score_street_1 = 0, team_1_score_street_2 = 0, team_1_score_street_3 = 0, team_2_score_street_1 = 0, team_2_score_street_2 = 0, team_2_score_street_3 = 0, team_score_street_main = 0', (error, results) => {
       if (error) {
         res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
         console.log("success: false, message: Ошибка обновления счёта  ", msg);
@@ -581,6 +595,47 @@ app.get('/update-score', (req, res) => {
       }
     });
   }
+  // if (team === 1) {
+  //   pool.query('UPDATE score SET score_team_1 = score_team_1 + $1', [updateValue], (error, results) => {
+  //     if (error) {
+  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
+  //     } else {
+  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
+  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
+  //     }
+  //   });
+  // } else if (team === 2) {
+  //   pool.query('UPDATE score SET score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+  //     if (error) {
+  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
+  //     } else {
+  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
+  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
+  //     }
+  //   });
+  // } else if (team === 0) {
+  //   pool.query('UPDATE score SET score_team_1 = score_team_1 + $1, score_team_2 = score_team_2 + $1', [updateValue], (error, results) => {
+  //     if (error) {
+  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
+  //     } else {
+  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
+  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
+  //     }
+  //   });
+  // } else if (team === 3) {
+  //   pool.query('UPDATE score SET score_team_1 = 0, score_team_2 = 0', (error, results) => {
+  //     if (error) {
+  //       res.status(500).json({ success: false, message: 'Ошибка обновления счёта' });
+  //       console.log("success: false, message: Ошибка обновления счёта  ", msg);
+  //     } else {
+  //       res.json({ success: true, message: 'Счёт успешно обновлён' });
+  //       console.log("success: true, message: Счёт успешно обновлён  ", msg);
+  //     }
+  //   });
+  // }
 
 });
 
