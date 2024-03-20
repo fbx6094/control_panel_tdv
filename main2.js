@@ -4,7 +4,7 @@ const { Pool } = require('pg');
 
 const app = express();
 const port = 5051;
-const ipv4adress = '192.168.1.79';
+const ipv4adress = '192.168.1.110';
 
 // Подключение к базе данных
 const pool = new Pool({

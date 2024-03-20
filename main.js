@@ -3,8 +3,8 @@ const express = require('express');
 const { Pool } = require('pg');
 
 const app = express();
-const port = 5050;
-const ipv4adress = '192.168.1.79';
+const port = 5030;
+const ipv4adress = '192.168.1.110';
 
 // Подключение к базе данных
 const pool = new Pool({
@@ -63,7 +63,7 @@ app.get('/', (req, res) => {
               
               margin: 1rem;
           }
-  
+          
           .left {
               align-self: flex-start;
               order: 1;
@@ -273,7 +273,7 @@ app.get('/update-score', (req, res) => {
     team1 = 2;
     console.log(counter2)
   } else if (action === 'element_on_street_3_team_1') {
-    updateValue = 2 + counter3;
+    updateValue = 2 + counter3; 
     // team = 1;
     msg = 'element_on_street_3_team_1';
     counter3 += 1;
