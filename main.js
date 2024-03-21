@@ -578,6 +578,7 @@ app.get('/update-score', (req, res) => {
 });
 
 app.listen(port, ipv4adress, () => {
-  console.log(`Сервер запущен на ${ipv4adress} порт ${port}`);
-  console.log(`Сервер запущен на ${port}-ом порту `);
+  // console.log(`Сервер запущен на ${ipv4adress} порт ${port}`);
+  // console.log(`Сервер запущен на ${port}-ом порту `);
+  console.log(`${ipv4adress}:${port}`)
 });
