@@ -113,22 +113,21 @@ app.get('/', (req, res) => {
       <div class="container">
           <div class="column center">
               <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ ПЕРВОЙ КОМАНДЫ(ЛЕВОЙ)</h1>
-              <button id="button" onclick="updateScore('element_on_street_1_team_1')">Элемент установлен на улице Медиа для первой команды</button>
+              <button id="button" onclick="updateScore('element_on_street_1_team_1')">Улице Медиа </button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('element_on_street_2_team_1')">Элемент установлен на улице Первых для первой команды</button>
+              <button id="button" onclick="updateScore('element_on_street_2_team_1')">Улице Первых </button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('element_on_street_3_team_1')">Элемент установлен на улице Истории для первой команды</button>
+              <button id="button" onclick="updateScore('element_on_street_3_team_1')">Улице Истории </button>
               <br>
               <br>
               <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу </button>
               <br>
               <br>
-              <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Элемент установлен на любой из этажей
+              <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Любой из этажей
                   небоскреба
-                  для
-                  первой команды</button>
+                  </button>
               <br>
               <br>
               <button id="button" onclick="updateScore('parking_on_warehouse_team_1')">Парковка на складе первая команда</button>
@@ -273,7 +272,7 @@ app.get('/update-score', (req, res) => {
     team1 = 2;
     console.log(counter2)
   } else if (action === 'element_on_street_3_team_1') {
-    updateValue = 2 + counter3; 
+    updateValue = 2 + counter3;
     // team = 1;
     msg = 'element_on_street_3_team_1';
     counter3 += 1;
