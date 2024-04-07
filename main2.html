@@ -1,0 +1,285 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #app * {
+            z-index: 10;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(39, 39, 39);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 80rem;
+            padding: 2rem;
+        }
+
+        .reset_btn {
+            background-color: #ad0000;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+
+            margin: 1rem;
+        }
+
+        .left {
+            align-self: flex-start;
+            order: 1;
+        }
+
+        .right {
+            align-self: flex-start;
+            order: 1;
+        }
+
+        .center {
+            position: absolute;
+            left: 45%;
+            top: 0%;
+            transform: translate(-50%);
+            order: 2;
+            /* margin-top: -50px; */
+        }
+
+        button {
+            background-color: #2e5fe6;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* @media (max-width: 768px) {
+      .container {
+          flex-direction: column;
+      }
+  
+      .column {
+          flex-basis: 100%;
+      }
+  } */
+    </style>
+</head>
+
+<body>
+    <div class="app" id="app">
+        <div class="container">
+            <div class="column center">
+                <!-- <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ ВТОРОЙ КОМАНДЫ(ПРАВОЙ)</h1> -->
+                <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ КОМАНДЫ {{data.name_team_2}}</h1>
+                <button id="button" onclick="updateScore('element_on_street_2_team_2')">улица Первых</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_street_1_team_2')">улица Медиа</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_street_3_team_2')">улица Истории</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('house_got_roof_team_2')">Дом/небоскреб получил крышу </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_team_2')">любой из
+                    этажей
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('parking_on_warehouse_team_2')">Парковка на складе</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('parking_anywhere_team_2')">Парковка на любой из улиц</button>
+                <br>
+                <br>
+                <h1 style="text-align: center; color: red;">НЕБОСКРЕБ</h1>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_1')">1 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_2')">2 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_3')">3 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_4')">4 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <h1 style="text-align: center; color: red;">ШТРАФЫ</h1>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('moving_2_or_more_obs_team_2')">Движение двух и более элементов
+                    одновременно </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('touching_another_robot_team_2')">Касание робота
+                    соперника</button>
+
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('bothering_another_robot_team_2')">Препятствие роботу соперника
+                </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('throwing_elements_at_another_robot_team_2')">Кидание элементов
+                    в
+                    робота
+                    соперника </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('robot_out_of_field_team_2')">Проекция робота за полем
+                </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('moving_streets_team_2')">Движение кварталов </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('robot_broken_team_2')">Отвалилась деталь </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('opponents_house_broken_by_team_2')">Поломка дома соперника
+                </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('skyscraper_broken_by_team_2')">Поломка небоскреба </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('opponents_robot_broken_team_2')">Поломка робота соперника
+                </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('opponents_triangle_taken_by_team_2')">Захват конуса соперника
+                </button>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <br>
+                <br>
+                <button id="button" class="reset_btn" onClick="updateScore('reset')">СБРОС ОЧКОВ</button>
+                <br>
+                <br>
+            </div>
+
+
+
+            <div class="container" style="margin-top: -70px;">
+                <div class="column">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const { onMounted, createApp, ref } = Vue;
+        createApp({
+            setup() {
+                const message = ref("Hello vue!");
+                const data = ref({
+                    final_winner: "null",
+                    id: "adsadsadsadasdasd",
+                    score_team_1: "0",
+                    name_team_1: "Name 1",
+                    score_team_2: "0",
+                    name_team_2: "Name 2",
+                    timer: true,
+                    timer_start: "2018-25-12 23:50:55",
+                    timer_end: "2018-25-12 23:50:55",
+                    team_1_score_street_1: 0,
+                    team_1_score_street_2: 0,
+                    team_1_score_street_3: 0,
+                    team_2_score_street_1: 0,
+                    team_2_score_street_2: 0,
+                    team_2_score_street_3: 0,
+                    team_score_street_main: 0,
+                    progress_bar_state: 0,
+                    state_of_vidget: 0,
+                    final_winner_score: 0,
+                });
+                const fetchData = () => {
+                    setInterval(() => {
+                        fetch("http://193.164.149.85:5000/scores").then((result) =>
+
+                            //fetch("http://185.68.22.42:3000/scores").then((result) =>
+                            result.json().then((res) => {
+                                data.value = res[0];
+                            })
+                        );
+                    }, 100); // Обновление каждые n секунды
+                };
+                fetchData();
+
+
+
+
+                return {
+                    message,
+                    data,
+
+                };
+            },
+        }).mount('#app')
+    </script>
+</body>
+<script>
+
+
+    const tbutton = document.querySelectorAll('button');
+
+    tbutton.forEach((button) => {
+        button.addEventListener('touchstart', () => {
+            button.style.backgroundColor = '#ad0000';
+        });
+
+        button.addEventListener('touchend', () => {
+            button.style.backgroundColor = '';
+        });
+    })
+
+
+    function updateScore(action) {
+        fetch('/update-score?action=' + action)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Ошибка:', error));
+    }
+</script>
+
+</html>
