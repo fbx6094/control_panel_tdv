@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         * {
             box-sizing: border-box;
+        }
+
+        #app * {
+            z-index: 10;
         }
 
         body {
@@ -90,114 +95,175 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="column center">
-            <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ ПЕРВОЙ КОМАНДЫ(ЛЕВОЙ)</h1>
-            <button id="button" onclick="updateScore('element_on_street_1_team_1')">Улице Медиа </button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_street_2_team_1')">Улице Первых </button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_street_3_team_1')">Улице Истории </button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу </button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Любой из этажей
-                небоскреба
-            </button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('parking_on_warehouse_team_1')">Парковка на складе первая
-                команда</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('parking_anywhere_team_1')">Парковка на любой из улиц первая
-                команда</button>
-            <br>
-            <br>
-            <h1 style="text-align: center; color: red;">ШТРАФЫ</h1>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('moving_2_or_more_obs_team_1')">Движение двух и более элементов
-                одновременно у первой команды</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('touching_another_robot_team_1')">Касание робота соперника у первой
-                команды</button>
+    <div class="app" id="app">
+        <div class="container">
+            <div class="column center">
+                <!-- <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ ПЕРВОЙ КОМАНДЫ(ЛЕВОЙ)</h1> -->
+                <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ КОМАНДЫ {{data.name_team_1}}</h1>
+                <button id="button" onclick="updateScore('element_on_street_2_team_1')">Улице Первых </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_street_1_team_1')">Улице Медиа </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_street_3_team_1')">Улице Истории </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Любой из этажей
+                    небоскреба
+                </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('parking_on_warehouse_team_1')">Парковка на складе первая
+                    команда</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('parking_anywhere_team_1')">Парковка на любой из улиц первая
+                    команда</button>
+                <br>
+                <br>
+                <h1 style="text-align: center; color: red;">ШТРАФЫ</h1>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('moving_2_or_more_obs_team_1')">Движение двух и более элементов
+                    одновременно у первой команды</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('touching_another_robot_team_1')">Касание робота соперника у
+                    первой
+                    команды</button>
 
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('bothering_another_robot_team_1')">Препятствие роботу соперника у
-                первой
-                команды</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('throwing_elements_at_another_robot_team_1')">Кидание элементов в
-                робота
-                соперника у первой команды</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('robot_out_of_field_team_1')">Проекция робота за полем у первой
-                команды</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('moving_streets_team_1')">Движение кварталов у первой
-                команды</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('robot_broken_team_1')">Отвалилась деталь у первой команды</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('opponents_house_broken_by_team_1')">Поломка дома соперника первая
-                команда</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('skyscraper_broken_by_team_1')">Поломка небоскреба первая
-                команда</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('opponents_robot_broken_team_1')">Поломка робота соперника первая
-                команда</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('opponents_triangle_taken_by_team_1')">Захват конуса соперника
-                первая
-                команда</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_skyscraper_floor_1')">Элемент установлен на 1 этаж
-                небоскреба</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_skyscraper_floor_2')">Элемент установлен на 2 этаж
-                небоскреба</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_skyscraper_floor_3')">Элемент установлен на 3 этаж
-                небоскреба</button>
-            <br>
-            <br>
-            <button id="button" onclick="updateScore('element_on_skyscraper_floor_4')">Элемент установлен на 4 этаж
-                небоскреба</button>
-            <br>
-            <br>
-            <br>
-            <br>
-            <button id="button" class="reset_btn" onClick="updateScore('reset')">СБРОС ОЧКОВ</button>
-            <br>
-            <br>
-        </div>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('bothering_another_robot_team_1')">Препятствие роботу соперника
+                    у
+                    первой
+                    команды</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('throwing_elements_at_another_robot_team_1')">Кидание элементов
+                    в
+                    робота
+                    соперника у первой команды</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('robot_out_of_field_team_1')">Проекция робота за полем у первой
+                    команды</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('moving_streets_team_1')">Движение кварталов у первой
+                    команды</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('robot_broken_team_1')">Отвалилась деталь у первой
+                    команды</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('opponents_house_broken_by_team_1')">Поломка дома соперника
+                    первая
+                    команда</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('skyscraper_broken_by_team_1')">Поломка небоскреба первая
+                    команда</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('opponents_robot_broken_team_1')">Поломка робота соперника
+                    первая
+                    команда</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('opponents_triangle_taken_by_team_1')">Захват конуса соперника
+                    первая
+                    команда</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_1')">Элемент установлен на 1 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_2')">Элемент установлен на 2 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_3')">Элемент установлен на 3 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_skyscraper_floor_4')">Элемент установлен на 4 этаж
+                    небоскреба</button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <button id="button" class="reset_btn" onClick="updateScore('reset')">СБРОС ОЧКОВ</button>
+                <br>
+                <br>
+            </div>
 
 
-        <div class="container" style="margin-top: -70px;">
-            <div class="column">
+            <div class="container" style="margin-top: -70px;">
+                <div class="column">
 
 
+                </div>
             </div>
         </div>
+    </div>
+    <script>
+        const { onMounted, createApp, ref } = Vue;
+        createApp({
+            setup() {
+                const message = ref("Hello vue!");
+                const data = ref({
+                    final_winner: "null",
+                    id: "adsadsadsadasdasd",
+                    score_team_1: "0",
+                    name_team_1: "Name 1",
+                    score_team_2: "0",
+                    name_team_2: "Name 2",
+                    timer: true,
+                    timer_start: "2018-25-12 23:50:55",
+                    timer_end: "2018-25-12 23:50:55",
+                    team_1_score_street_1: 0,
+                    team_1_score_street_2: 0,
+                    team_1_score_street_3: 0,
+                    team_2_score_street_1: 0,
+                    team_2_score_street_2: 0,
+                    team_2_score_street_3: 0,
+                    team_score_street_main: 0,
+                    progress_bar_state: 0,
+                    state_of_vidget: 0,
+                    final_winner_score: 0,
+                });
+                const fetchData = () => {
+                    setInterval(() => {
+                        fetch("http://193.164.149.85:5000/scores").then((result) =>
+
+                            //fetch("http://185.68.22.42:3000/scores").then((result) =>
+                            result.json().then((res) => {
+                                data.value = res[0];
+                            })
+                        );
+                    }, 1000); // Обновление каждые n секунды
+                };
+                fetchData();
+
+
+
+
+                return {
+                    message,
+                    data,
+
+                };
+            },
+        }).mount('#app')
+    </script>
+
 </body>
 <script>
     const tbutton = document.querySelectorAll('button');
