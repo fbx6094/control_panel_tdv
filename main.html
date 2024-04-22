@@ -80,6 +80,7 @@
             margin: 0.5rem 0;
             cursor: pointer;
             width: 100%;
+            border-radius: 10px;
         }
 
         /* @media (max-width: 768px) {
@@ -100,10 +101,10 @@
             <div class="column center">
                 <!-- <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ ПЕРВОЙ КОМАНДЫ(ЛЕВОЙ)</h1> -->
                 <h1 style="text-align: center; color: red;">ПАНЕЛЬ УПРАВЛЕНИЯ ОЧКОВ КОМАНДЫ {{data.name_team_1}}</h1>
-                <button id="button" onclick="updateScore('element_on_street_2_team_1')">Улица Первых </button>
-                <br>
-                <br>
                 <button id="button" onclick="updateScore('element_on_street_1_team_1')">Улица Медиа </button>
+                <br>
+                <br>
+                <button id="button" onclick="updateScore('element_on_street_2_team_1')">Улица Первых </button>
                 <br>
                 <br>
                 <button id="button" onclick="updateScore('element_on_street_3_team_1')">Улица Истории </button>
@@ -112,11 +113,11 @@
                 <button id="button" onclick="updateScore('house_got_roof_team_1')">Дом/небоскреб получил крышу </button>
                 <br>
                 <br>
-                <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Любой из этажей
+                <!-- <button id="button" onclick="updateScore('element_on_skyscraper_team_1')">Любой из этажей
                     небоскреба
                 </button>
                 <br>
-                <br>
+                <br> -->
                 <button id="button" onclick="updateScore('parking_on_warehouse_team_1')">Парковка на складе </button>
                 <br>
                 <br>

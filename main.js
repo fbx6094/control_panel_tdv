@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 const port = 5030;
-const ipv4adress = '192.168.23.32';
+const ipv4adress = '192.168.217.40';
 
 // Подключение к базе данных
 const pool = new Pool({
